@@ -4,6 +4,11 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import Title from '../Title';
 import {getFontFamily} from '../../helpers/fonts';
 import UserStory from '../UserStory';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../helpers/scaling';
 
 type HeaderPostProps = {
   userStoriesRenderedData: Array<any>;
@@ -19,7 +24,7 @@ const HeaderPost = ({
       <View style={styles.container}>
         <Title title="Let's Explore" />
         <TouchableOpacity style={styles.icon}>
-          <Icon name="envelope" color={'#898dae'} size={20} />
+          <Icon name="envelope" color={'#898dae'} size={horizontalScale(20)} />
           <View style={styles.messageNumberContainer}>
             <Text style={styles.messageNumber}>2</Text>
           </View>
@@ -44,36 +49,37 @@ export default HeaderPost;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 16,
-    marginTop: 30,
+    marginHorizontal: horizontalScale(16),
+    marginTop: verticalScale(30),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
   icon: {
-    padding: 14,
+    paddingHorizontal: horizontalScale(14),
+    paddingVertical: verticalScale(14),
     backgroundColor: '#f9faf3',
     borderRadius: 100,
   },
   messageNumberContainer: {
     position: 'absolute',
-    top: 8,
-    right: 8,
+    top: verticalScale(8),
+    right: horizontalScale(8),
     backgroundColor: '#f35bac',
-    width: 15,
-    height: 15,
-    borderRadius: 8,
+    width: horizontalScale(15),
+    height: horizontalScale(15),
+    borderRadius: horizontalScale(8),
     justifyContent: 'center',
     alignItems: 'center',
   },
   messageNumber: {
     color: 'white',
-    fontSize: 8,
+    fontSize: scaleFontSize(8),
     fontFamily: getFontFamily('600'),
     textAlign: 'center',
   },
   userStoryContainer: {
-    marginTop: 20,
-    marginHorizontal: 28,
+    marginTop: verticalScale(20),
+    marginHorizontal: horizontalScale(28),
   },
 });

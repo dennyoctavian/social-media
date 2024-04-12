@@ -8,6 +8,7 @@ import {
   ViewStyle,
 } from 'react-native';
 import React from 'react';
+import {horizontalScale} from '../../helpers/scaling';
 type UserProfileImageProps = {
   profileImage: ImageProps;
   imageDimensions: number;
@@ -37,7 +38,7 @@ const styles = StyleSheet.create<UserProfileImageStyles | any>({
   userImageContainer: (imageDimensions: number) => ({
     borderColor: '#f35bac',
     borderWidth: 1,
-    padding: 4,
+    padding: horizontalScale(4),
     borderRadius: imageDimensions,
   }),
   image: (imageDimensions: number) => ({

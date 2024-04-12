@@ -4,6 +4,11 @@ import UserProfileImage from '../UserProfileImage';
 import {ImageProps} from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import {getFontFamily} from '../../helpers/fonts';
+import {
+  horizontalScale,
+  scaleFontSize,
+  verticalScale,
+} from '../../helpers/scaling';
 
 type UserPostProps = {
   firstName: string;
@@ -33,7 +38,7 @@ const UserPost = ({
           {profileImage && (
             <UserProfileImage
               profileImage={profileImage}
-              imageDimensions={48}
+              imageDimensions={horizontalScale(48)}
             />
           )}
           <View style={styles.user}>
@@ -43,7 +48,11 @@ const UserPost = ({
             {location && <Text style={styles.location}>{location}</Text>}
           </View>
         </View>
-        <Icon name="more-horizontal" color={'#79869f'} size={24} />
+        <Icon
+          name="more-horizontal"
+          color={'#79869f'}
+          size={horizontalScale(24)}
+        />
       </View>
       <View style={styles.postImage}>
         <Image source={image} />
@@ -51,15 +60,23 @@ const UserPost = ({
       <View style={styles.informationParentContainer}>
         <View style={styles.informationContainer}>
           <View style={[styles.itemInformation, styles.marginLeft0]}>
-            <Icon name="heart" color={'#79869f'} size={24} />
+            <Icon name="heart" color={'#79869f'} size={horizontalScale(24)} />
             <Text style={styles.items}>{likes}</Text>
           </View>
           <View style={styles.itemInformation}>
-            <Icon name="message-circle" color={'#79869f'} size={24} />
+            <Icon
+              name="message-circle"
+              color={'#79869f'}
+              size={horizontalScale(24)}
+            />
             <Text style={styles.items}>{comments}</Text>
           </View>
           <View style={styles.itemInformation}>
-            <Icon name="bookmark" color={'#79869f'} size={24} />
+            <Icon
+              name="bookmark"
+              color={'#79869f'}
+              size={horizontalScale(24)}
+            />
             <Text style={styles.items}>{bookmarks}</Text>
           </View>
         </View>
@@ -73,8 +90,8 @@ export default UserPost;
 
 const styles = StyleSheet.create({
   userPostContainer: {
-    marginHorizontal: 24,
-    marginTop: 35,
+    marginHorizontal: horizontalScale(24),
+    marginTop: verticalScale(35),
   },
   container: {
     flexDirection: 'row',
@@ -83,34 +100,34 @@ const styles = StyleSheet.create({
   },
   user: {
     justifyContent: 'center',
-    marginLeft: 10,
+    marginLeft: horizontalScale(10),
   },
   userProfile: {
     flexDirection: 'row',
   },
   itemInformation: {
     flexDirection: 'row',
-    marginLeft: 27,
+    marginLeft: horizontalScale(27),
     alignItems: 'center',
     gap: 5,
   },
   username: {
     color: '#000',
     fontFamily: getFontFamily('600'),
-    fontSize: 16,
+    fontSize: scaleFontSize(16),
   },
   location: {
     color: '#79869f',
     fontFamily: getFontFamily('400'),
-    fontSize: 12,
-    marginTop: 5,
+    fontSize: scaleFontSize(12),
+    marginTop: verticalScale(5),
   },
   postImage: {
     alignItems: 'center',
-    marginVertical: 20,
+    marginVertical: verticalScale(20),
   },
   informationParentContainer: {
-    marginLeft: 10,
+    marginLeft: horizontalScale(10),
   },
   informationContainer: {
     flexDirection: 'row',
@@ -119,11 +136,11 @@ const styles = StyleSheet.create({
   items: {
     color: '#79869f',
     fontFamily: getFontFamily('500'),
-    fontSize: 14,
+    fontSize: scaleFontSize(14),
   },
 
   userPostContainerSeperator: {
-    paddingBottom: 20,
+    paddingBottom: verticalScale(20),
     borderBottomWidth: 0.5,
     color: '#eff2f6',
   },
